@@ -1,0 +1,36 @@
+From 134fba424a6611820e984f616a5bfa36593943ec Mon Sep 17 00:00:00 2001
+From: balbes150 <balbes-150@yandex.ru>
+Date: Tue, 28 May 2019 12:58:42 +0300
+Subject: [PATCH] fix emmc n2
+
+---
+ drivers/mmc/host/meson-gx-mmc.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/mmc/host/meson-gx-mmc.c b/drivers/mmc/host/meson-gx-mmc.c
+index c5a8af4ca7..5582561586 100644
+--- a/drivers/mmc/host/meson-gx-mmc.c
++++ b/drivers/mmc/host/meson-gx-mmc.c
+@@ -859,6 +859,9 @@ static irqreturn_t meson_mmc_irq(int irq, void *dev_id)
+ 	if (WARN_ON(!host) || WARN_ON(!host->cmd))
+ 		return IRQ_NONE;
+ 
++	/* ack all raised interrupts */
++	writel(status, host->regs + SD_EMMC_STATUS);
++
+ 	cmd = host->cmd;
+ 	data = cmd->data;
+ 	cmd->error = 0;
+@@ -905,9 +908,6 @@ out:
+ 	if (ret == IRQ_HANDLED)
+ 		meson_mmc_request_done(host->mmc, cmd->mrq);
+ 
+-	/* ack all raised interrupts */
+-	writel(status, host->regs + SD_EMMC_STATUS);
+-
+ 	return ret;
+ }
+ 
+-- 
+2.17.1
+
