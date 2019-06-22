@@ -1,0 +1,27 @@
+---
+ arch/arm64/boot/dts/amlogic/meson-g12-common.dtsi | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/amlogic/meson-g12-common.dtsi b/arch/arm64/boot/dts/amlogic/meson-g12-common.dtsi
+index 2baa04303762..76484801478d 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-g12-common.dtsi
++++ b/arch/arm64/boot/dts/amlogic/meson-g12-common.dtsi
+@@ -1984,6 +1984,14 @@
+ 						};
+ 					};
+ 
++					pwm_a_e_pins: pwm-a-e {
++						mux {
++							groups = "pwm_a_e";
++							function = "pwm_a_e";
++							bias-disable;
++						};
++					};
++
+ 					pwm_ao_a_pins: pwm-ao-a {
+ 						mux {
+ 							groups = "pwm_ao_a";
+-- 
+2.21.0
+
+  

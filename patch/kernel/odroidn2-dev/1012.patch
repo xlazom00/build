@@ -1,0 +1,19 @@
+---
+ include/dt-bindings/clock/g12a-clkc.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/dt-bindings/clock/g12a-clkc.h b/include/dt-bindings/clock/g12a-clkc.h
+index b6b127e45634..8ccc29ac7a72 100644
+--- a/include/dt-bindings/clock/g12a-clkc.h
++++ b/include/dt-bindings/clock/g12a-clkc.h
+@@ -137,5 +137,6 @@
+ #define CLKID_VDEC_HEVC				207
+ #define CLKID_VDEC_HEVCF			210
+ #define CLKID_TS				212
++#define CLKID_CPUB_CLK				224
+ 
+ #endif /* __G12A_CLKC_H */
+-- 
+2.21.0
+
+  
